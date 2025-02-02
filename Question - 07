@@ -1,0 +1,19 @@
+#include <bits/stdc++.h>
+using namespace std;
+int maxProfit(int n, vector<int>& price) {
+    if(n==0){
+        return 0;
+    }
+    int maxVal=INT_MIN;
+    for (int i=1;i<=n;i++) {
+        int curr=price[i -1]+maxProfit(n-i,price);
+        maxVal= max(maxVal,curr);
+    }
+    return maxVal;
+}
+int main() {
+    int N = 8;
+    vector<int> price= {1, 5, 8, 9, 10, 17, 17, 20};
+    cout << "Otput: "<<maxProfit(N,price) <<endl;
+    return 0;
+}
